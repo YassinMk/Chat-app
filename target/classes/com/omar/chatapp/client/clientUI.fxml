@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="bp_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="1006.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.omar.chatapp.client.ClientController">
+   <left>
+      <HBox prefHeight="702.0" prefWidth="330.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="702.0" prefWidth="76.0" styleClass="dark-gray-background">
+               <children>
+                  <Pane prefHeight="236.0" prefWidth="92.0" />
+                  <ImageView fx:id="btnMessage" fitHeight="43.0" fitWidth="38.0" onMouseClicked="#btnMessageOnClicked" pickOnBounds="true" preserveRatio="true" styleClass="selected">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                     <image>
+                        <Image url="@../Images/message-white.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="btnGroup" fitHeight="43.0" fitWidth="38.0" onMouseClicked="#btnGroupOnClicked" pickOnBounds="true" preserveRatio="true" styleClass="selected">
+                     <image>
+                        <Image url="@../Images/team-fill-gray.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Pane prefHeight="223.0" prefWidth="92.0" VBox.vgrow="ALWAYS" />
+                  <ImageView fx:id="btnExit" fitHeight="43.0" fitWidth="38.0" onMouseClicked="#btnExitOnClicked" pickOnBounds="true" preserveRatio="true" styleClass="selected">
+                     <image>
+                        <Image url="@../Images/logout-box-r-fill.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+            <VBox fx:id="conversationListVBox" alignment="TOP_CENTER" prefHeight="702.0" prefWidth="254.0" styleClass="gray-background">
+               <children>
+                  <Pane prefHeight="2.0" prefWidth="200.0" styleClass="dark-gray-background" />
+                  <StackPane fx:id="spConversation" prefHeight="630.0" prefWidth="254.0">
+                     <children>
+                        <Pane fx:id="groupChatPane" prefHeight="630.0" prefWidth="254.0" visible="false">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="50.0" prefWidth="254.0" spacing="110.0">
+                                 <children>
+                                    <Label text="Groups" textFill="white">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="btnCreateGroup" mnemonicParsing="false" onAction="#createGroup" prefHeight="26.0" prefWidth="17.0">
+                                       <graphic>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="selected">
+                                             <image>
+                                                <Image url="@../Images/group.png" />
+                                             </image>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </ImageView>
+                                       </graphic>
+                                       <styleClass>
+                                          <String fx:value="transparent-background" />
+                                          <String fx:value="selected" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <ListView fx:id="groupListView" fixedCellSize="45.0" layoutY="50.0" prefHeight="590.0" prefWidth="254.0" styleClass="transparent-background" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="individualChatPane" layoutX="10.0" layoutY="10.0" prefHeight="630.0" prefWidth="254.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="50.0" prefWidth="254.0" spacing="80.0">
+                                 <children>
+                                    <Label text="Active Users" textFill="WHITE">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="selected">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <ListView fx:id="activeClientListView" fixedCellSize="50.0" layoutY="50.0" prefHeight="590.0" prefWidth="254.0" styleClass="transparent-background" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </StackPane>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </left>
+   <center>
+      <StackPane BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="landingInfoVbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #838586;">
+               <children>
+                  <Pane prefHeight="161.0" prefWidth="676.0" />
+                  <ImageView fitHeight="124.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/question-answer-fill.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="ChatApp" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="36.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Pane prefHeight="139.0" prefWidth="676.0" />
+                  <HBox alignment="CENTER" prefHeight="30.0" spacing="10.0" />
+                  <HBox alignment="CENTER" prefHeight="30.0" spacing="10.0" />
+               </children>
+            </VBox>
+            <VBox fx:id="chatWindowVbox" prefHeight="200.0" prefWidth="100.0" visible="false">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="82.0" prefWidth="200.0" styleClass="border-bottom">
+                     <children>
+                        <Pane fx:id="selectedUserInfoPane" prefHeight="80.0" prefWidth="344.0">
+                           <children>
+                              <VBox alignment="CENTER_LEFT" prefHeight="82.0" prefWidth="313.0">
+                                 <children>
+                                    <Label fx:id="labelSelectedUsername" prefHeight="31.0" prefWidth="288.0" text="Participant's Name" textFill="#9da7a7">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="303.0" spacing="11.0">
+                                       <children>
+                                          <Circle fx:id="activeIndicator" fill="#50c948" radius="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                                          <Label fx:id="activeLabel" prefHeight="27.0" prefWidth="60.0" text="Online" textFill="#9da7a7">
+                                             <font>
+                                                <Font name="Ebrima" size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="82.0" prefWidth="5.0" style="-fx-background-radius: 5;" styleClass="dark-gray-background">
+                           <HBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Pane>
+                        <Pane prefHeight="80.0" prefWidth="326.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="82.0" prefWidth="326.0">
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT">
+                                       <children>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Images/user-fill.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="labelClientName" prefHeight="22.0">
+                                             <font>
+                                                <Font name="Ebrima Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <TextFlow prefHeight="45.0" prefWidth="300.0" textAlignment="RIGHT">
+                                       <children>
+                                          <Label fx:id="labelInfo" prefHeight="45.0" />
+                                       </children>
+                                    </TextFlow>
+                                 </children>
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <ScrollPane fx:id="sp_main" prefHeight="570.0" prefWidth="676.0" styleClass="transparent-background">
+                     <content>
+                        <VBox fx:id="vBoxMessages" alignment="BOTTOM_CENTER" prefHeight="568.0" prefWidth="673.0" spacing="5.0">
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding></VBox>
+                     </content>
+                  </ScrollPane>
+                  <HBox alignment="CENTER" prefHeight="45.0" prefWidth="676.0" styleClass="border-top">
+                     <children>
+                        <TextField fx:id="tf_message" prefHeight="43.0" prefWidth="580.0" promptText="Type something to send..." styleClass="transparent-background">
+                           <font>
+                              <Font name="Ebrima" size="16.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="button_send" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#sendMessage">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/send-plane.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="transparent-background" />
+                              <String fx:value="selected" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

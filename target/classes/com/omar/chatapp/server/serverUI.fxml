@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@serverUiStyle.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.omar.chatapp.server.ServerController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0" styleClass="mainPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane fx:id="titlePane" prefHeight="37.0" prefWidth="460.0" style="-fx-background-color: #222; -fx-background-radius: 19 0;">
+               <children>
+                  <ImageView fx:id="btnClose" fitHeight="16.0" fitWidth="16.0" layoutX="572.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/close.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnMinimize" fitHeight="16.0" fitWidth="16.0" layoutX="550.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/hide.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="41.0" layoutY="11.0" text="Chat Server" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="19.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/icon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="600.0">
+               <children>
+                  <Label text="User List Information">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Pane prefHeight="32.0" prefWidth="199.0" />
+                  <Label text="Active Clients">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="200.0" prefWidth="600.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+               <children>
+                  <ScrollPane fx:id="spUserList" prefHeight="200.0" prefWidth="244.0">
+                     <content>
+                        <VBox fx:id="usersBox" alignment="CENTER" prefHeight="197.0" prefWidth="241.0" styleClass="user-list-border">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding></VBox>
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane fx:id="sp_main" prefHeight="200.0" prefWidth="331.0">
+                     <content>
+                        <VBox fx:id="activeClientsBox" alignment="CENTER" prefHeight="197.0" prefWidth="328.0" styleClass="user-list-border">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding></VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="600.0" spacing="5.0">
+               <children>
+                  <JFXButton fx:id="btnLoadRegisteredUser" buttonType="RAISED" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#loadRegisteredUser" prefHeight="30.0" styleClass="trans-btn-white-border" text="Registered User" textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <ripplerFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="#fff82476" />
+                              <Stop color="#56b00773" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </ripplerFill></JFXButton>
+                  <JFXButton fx:id="btnLoadActiveUser" buttonType="RAISED" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#loadActiveUser" prefHeight="30.0" styleClass="trans-btn-white-border" text="Active User" textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <ripplerFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="#fff82476" />
+                              <Stop color="#56b00773" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </ripplerFill></JFXButton>
+                  <JFXButton fx:id="btnDeleteAllUser" buttonType="RAISED" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#deleteAllUser" prefHeight="30.0" styleClass="trans-btn-white-border" text="Delete All User" textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <ripplerFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="#fff82476" />
+                              <Stop color="#56b00773" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </ripplerFill></JFXButton>
+               </children>
+               <padding>
+                  <Insets left="7.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="31.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Label fx:id="labelInfo" prefHeight="20.0" textFill="#4b0c5a">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font></Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
